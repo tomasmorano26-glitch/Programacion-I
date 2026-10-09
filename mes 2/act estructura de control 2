@@ -1,0 +1,13 @@
+parrafo = input("Ingrese el parrafo: ")
+cantidad = 0
+dentro = False
+
+for letra in parrafo:
+    if letra.isalnum():
+        if dentro == False:
+            cantidad = cantidad + 1
+            dentro = True
+    else:
+        dentro = False
+
+print("Cantidad de palabras:", cantidad)

@@ -1,0 +1,19 @@
+texto = input("Ingrese el mensaje: ")
+texto = texto.upper()
+codificado = ""
+
+for letra in texto:
+    if letra == "A" or letra == "Á":
+        codificado = codificado + "X"
+    elif letra == "E" or letra == "É":
+        codificado = codificado + "W"
+    elif letra == "I" or letra == "Í":
+        codificado = codificado + "K"
+    elif letra == "O" or letra == "Ó":
+        codificado = codificado + "&"
+    elif letra == "U" or letra == "Ú" or letra == "Ü":
+        codificado = codificado + "%"
+    else:
+        codificado = codificado + letra
+
+print("Mensaje codificado:", codificado)
