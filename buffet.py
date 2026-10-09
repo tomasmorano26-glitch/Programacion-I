@@ -1,5 +1,3 @@
-import os
-
 def mostrar_menu():
     print("---- SISTEMA DEL BUFFET ----\n")
     print("1. Cargar nuevo producto al catalogo")
@@ -119,25 +117,27 @@ def calcular_recaudacion_total_semana(ventas, catalogo):
 def cargar_datos():
     catalogo = []
     ventas = []
-    if os.path.exists("productos.txt"):
-        archivo = open("productos.txt", "r")
-        for linea in archivo:
-            datos = linea.strip().split(";")
-            catalogo.append({
-                "codigo": int(datos[0]),
-                "nombre": datos[1],
-                "precio": float(datos[2]),
-            })
-        archivo.close()
-    if os.path.exists("ventas.txt"):
-        archivo = open("ventas.txt", "r")
-        for linea in archivo:
-            datos = linea.strip().split(";")
-            fila = []
-            for i in range(5):
-                fila.append(int(datos[i]))
-            ventas.append(fila)
-        archivo.close()
+    archivo = open("productos.txt", "a")
+    archivo.close()
+    archivo = open("productos.txt", "r")
+    for linea in archivo:
+        datos = linea.strip().split(";")
+        catalogo.append({
+            "codigo": int(datos[0]),
+            "nombre": datos[1],
+            "precio": float(datos[2]),
+        })
+    archivo.close()
+    archivo = open("ventas.txt", "a")
+    archivo.close()
+    archivo = open("ventas.txt", "r")
+    for linea in archivo:
+        datos = linea.strip().split(";")
+        fila = []
+        for i in range(5):
+            fila.append(int(datos[i]))
+        ventas.append(fila)
+    archivo.close()
     while len(ventas) < len(catalogo):
         ventas.append([0, 0, 0, 0, 0])
     return catalogo, ventas
